@@ -1,7 +1,8 @@
-# multigaming-core
-Mutigaming core application
+# Multigaming
+### multigaming-core
+Mutigaming core application 
 
-![Logo](mglogo.png)
+![Logo](mglogo.png) 
 
 ## What is MGio
 Is a context agnostic multiplayer gaming framework. Uses the gRPC protocol for the exchange of events and actions.
@@ -13,3 +14,7 @@ It will be compatible with unity initially, but the idea is to allow gRPC exampl
 ## Why gRPC?
 Framework agnosticity. Once the proto file is available, the developer can create its own implementation of gRPC in order to follow the flow of the framework.
 Real time exchange
+
+## About the project
+
+## Initialization
