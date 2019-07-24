@@ -1,20 +1,58 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "multigaming.core.t";
-option java_outer_classname = "Example";
+option java_package = "multigaming.core";
+option java_outer_classname = "Room";
 option objc_class_prefix = "HLW";
 
-package multigaming.core.t;
+package multigaming.core;
 
-service ExampleService {
-  rpc send (ExampleRequest) returns (ExampleReply) {}
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+service RoomService {
+  rpc join (stream RoomJoinRequest) returns (stream RoomJoinReply) {}
+  rpc update (RoomRequest) returns (RoomReply) {}
+  rpc send (RoomMemberRequest) returns (RoomMemberReply) {}
 }
 
-message ExampleRequest {
+message RoomJoinRequest {
+  string uid = 1;
+  string code = 2;
+}
+
+message RoomJoinReply {
+  string status = 1;
+  string message = 2;
+  string token = 3;
+}
+
+message RoomRequest {
+  repeated string members = 1;
+}
+
+message Action {
   string name = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  repeated google.protobuf.Any values = 3;
 }
 
-message ExampleReply {
-  string message = 1;
+message Environment {
+  string status = 1;
+}
+
+message RoomReply {
+  repeated Action action = 1;
+  repeated Environment environment = 2;
+}
+
+message RoomMemberRequest {
+  string uid = 1;
+  string token = 2;
+  Action action = 3;
+}
+
+message RoomMemberReply {
+  string status = 1;
+  string message = 2;
 }

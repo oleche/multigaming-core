@@ -1,0 +1,5 @@
+profile: grpc
+defaultPackage: multigaming.core
+---
+testFramework: junit
+sourceLanguage: java

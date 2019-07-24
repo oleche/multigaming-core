@@ -1,6 +1,9 @@
 # multigaming-core
 Mutigaming core application
 
+![alt text](mglogo.png "Logo")
+
+
 ##What is MGio
 Is a context agnostic multiplayer gaming framework. Uses the gRPC protocol for the exchange of events and actions.
 
