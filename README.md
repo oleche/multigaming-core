@@ -9,7 +9,7 @@ Is a context agnostic multiplayer gaming framework. Uses the gRPC protocol for t
 
 The main idea of MGio is to allow developers to have a robust multiplayer framework that can be integrated easily with their games.
 
-It is currently compatible with unity via the library and via the multigaming-client for java, we are aiming to create gRPC examples for the main major gaming languages in the future.
+It is currently compatible with unity via the multigaming-library for unity and via the multigaming-client for java, we are aiming to create gRPC examples for the main major gaming languages in the future.
 
 ## Why gRPC?
 Framework agnosticity. Once the proto file is available, the developer can create its own implementation of gRPC in order to follow the flow of the framework.

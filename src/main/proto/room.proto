@@ -11,24 +11,34 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
 service RoomService {
-  rpc join (stream RoomJoinRequest) returns (stream RoomJoinReply) {}
-  rpc update (RoomRequest) returns (RoomReply) {}
+  rpc join (RoomRequest) returns (RoomReply) {}
   rpc send (RoomMemberRequest) returns (RoomMemberReply) {}
 }
 
-message RoomJoinRequest {
-  string uid = 1;
-  string code = 2;
+service RoomStreamService {
+  rpc exchange (stream RoomExchangeRequest) returns (stream RoomExchangeReply) {}
 }
 
-message RoomJoinReply {
+message RoomExchangeRequest {
+  string uid = 1;
+  string roomid = 2;
+  string code = 3;
+  string token = 4;
+  Action action = 5;
+}
+
+message RoomExchangeReply {
   string status = 1;
-  string message = 2;
-  string token = 3;
+  string code = 2;
+  string message = 3;
+  repeated Action action = 4;
+  repeated Environment environment = 5;
 }
 
 message RoomRequest {
-  repeated string members = 1;
+  string uid = 1;
+  string token = 2;
+  string roomid = 3;
 }
 
 message Action {
@@ -42,8 +52,9 @@ message Environment {
 }
 
 message RoomReply {
-  repeated Action action = 1;
-  repeated Environment environment = 2;
+  string status = 1;
+  string token = 2;
+  string message = 3;
 }
 
 message RoomMemberRequest {
